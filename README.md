@@ -10,3 +10,20 @@ Project Details
 ===============
 
 This project seeks to implement a web portal that services a prototype manufacturing plant. It seeks to change the functions available to a user based upon which type of user is currently logged in.
+
+
+
+User Types
+==========
+
+Associate:
+
+Contractor:
+
+Plant Floor:
+
+Safety:
+
+Security:
+
+Visitor:
