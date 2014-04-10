@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  form.form-horizontal.col-md-8.col-md-offset-4(id='signup-form', method='POST')
+    input(type='hidden', name='_csrf', value=token)
+    h2.form-heading Sign up for Contractor
+    .form-group
+      .col-md-5
+        input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus)
+    .form-group
+      .col-md-5
+        input.form-control(type='password', name='password', id='password', placeholder='Password')
+    .form-group
+      .col-md-5
+        input.form-control(type='password', name='confirmPassword', id='confirmPassword', placeholder='Confirm Password')
+    .form-group
+      .col-md-5
+        select.form-control(name="userType")
+          option Safety Employee
+          option Plant Employee
+          option Contractor
+          option Associate
+          option Security
+    .form-group
+      .col-md-5
+        button.btn.btn-success.btn-block(type='submit')
+          i.fa.fa-check
+          | Signup

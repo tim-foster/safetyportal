@@ -1,0 +1,111 @@
+#LeftNavbar.col-md-2(style="padding-left:0px")
+  if(user)  
+    if (user.profile.userType === 'Safety Employee')
+        ul.list-unstyled#sidebar
+          hr
+          li.nav-header
+            a(href="#safetyMenu" data-toggle="collapse") 
+              h5 Safety
+                .glyphicon.glyphicon-chevron-down
+            ul.list-unstyled.list-group.collapse#safetyMenu
+              li.list-group-item
+                a(href="#") Safety Cards
+              li.list-group-item
+                a(href="#") Safety Committee
+              li.list-group-item 
+                a(href="#") Training
+          li.nav-header
+            a(href="#contractorMenu" data-toggle="collapse") 
+              h5 Contractor Info
+                .glyphicon.glyphicon-chevron-down
+            ul.list-unstyled.collapse#contractorMenu
+              li.list-group-item
+                a(href="/display") Companies
+              li.list-group-item
+                a(href="#") Checked in
+              li.list-group-item
+                a(href="#") Incidents
+          li.nav-header
+            a(href="#employeeMenu" data-toggle="collapse") 
+              h5 Employees
+                .glyphicon.glyphicon-chevron-down
+            ul.list-unstyled.collapse#employeeMenu
+              li.list-group-item
+                a(href="#") Employee list
+              li.list-group-item
+                a(href="#") Zip Cards
+              li.list-group-item
+                a(href="#") Incidents
+
+    else if (user.profile.userType === 'Security')
+      ul.list-unstyled#sidebar
+        li.nav-header
+          a(href="#frontDesk" data-toggle="collapse") 
+            h5 Front Desk
+              .glyphicon.glyphicon-chevron-down
+          ul.list-unstyled.list-group.collapse#frontDesk
+            li.list-group-item
+              a(href="#") Sign in log
+            li.list-group-item
+              a(href="#") GMP Database
+            li.list-group-item
+              a(href="#") CCTV Audit
+            li.list-group-item
+              a(href="#") Material Pass
+        li.nav-header
+          a(href="#training" data-toggle="collapse")
+            h5 Training
+              .glyphicon.glyphicon-chevron-down
+          ul.list-group.list-group.collapse#training
+            li.list-group-item
+              a(href="#") Edge
+            li.list-group-item
+              a(href="#") Badges
+            li.list-group-item
+              a(href="#") CCTV
+            li.list-group-item
+              a(href="#") Patrol
+        li.nav-header
+          a(href="#employeeMenu" data-toggle="collapse") 
+            h5 Employees
+              .glyphicon.glyphicon-chevron-down
+          ul.list-unstyled.list-group.collapse#employeeMenu
+            li.list-group-item
+              a(href="#") Employee News
+            li.list-group-item
+              a(href="#") Daily Comm
+            li.list-group-item
+              a(href="#") Room Schedules
+            li.list-group-item
+              a(href="#") Employee List
+            li.list-group-item
+              a(href="#") Managers
+            li.list-group-item
+              a(href="#") Frequent Visitor
+        li.nav-header
+          a(href="#safetyMenu" data-toggle="collapse")
+            h5 Safety
+              .glyphicon.glyphicon-chevron-down
+          ul.list-unstyled.list-group.collapse#safetyMenu
+            li.list-group-item
+              a(href="#") Safety News
+            li.list-group-item
+              a(href="#") Incident Reports
+            li.list-group-item
+              a(href="#") Create Incident Report
+        li.nav-header
+          a(href="#qaMenu" data-toggle="collapse")
+            h5 QA
+              .glyphicon.glyphicon-chevron-down
+          ul.list-unstyled.list-group.collapse#qaMenu
+            li.list-group-item
+              a(href="#") QA News
+        li.nav-header
+          a(href="#associateMenu" data-toggle="collapse")
+            h5 Associate
+              .glyphicon.glyphicon-chevron-down
+          ul.list-unstyled.list-group.collapse#associateMenu
+            li.list-group-item
+              a(href="#") Associate List
+            li.list-group-item
+              a(href="#") Scheduled Interviews

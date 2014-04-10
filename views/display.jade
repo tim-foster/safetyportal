@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	.row
+		#BodyBlock.col-md-9
+			h1
+			|	Contractor List
+			if user
+				if list
+					each result in data
+						pre
+							|#{result.companyName}
+			a(href="/display2") Click to Download Excel

@@ -1,0 +1,101 @@
+mixin userType1(type)
+  .form-group
+    label.col-sm-2.control-label(for="userType") User Type
+    .col-sm-4
+      input.form-control(type='text', name='userType', id='userType', value=type disabled)
+
+extends ../layout
+
+block content
+  .row
+    if (user.userType === 'Admin')
+      pre.col-md-8
+        |#{user}
+    #bodyblock.col-md-offset-2
+      .col-md-11
+        .page-header(style="margin-top:10px")
+          h3(style="margin-top:0px") Profile Information
+        form.form-horizontal(action='/account/profile', method='POST')
+          .form-group
+            label.col-sm-2.control-label(for='email') Email
+            .col-sm-4
+              input.form-control(type='email', name='email', id='email', value='#{user.email}')
+              input(type='hidden', name='_csrf', value=token)
+          .form-group
+            label.col-sm-2.control-label(for='name') Name
+            .col-sm-4
+              input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+          +userType1(user.profile.userType)
+          .form-group
+            label.col-sm-2.control-label(for='location') Location
+            .col-sm-4
+              select.form-control(name="location")
+                if user.profile.location === "Washington"
+                  option(selected = "selected") Washington
+                else
+                  option Washington
+                if user.profile.location === "Nevada"
+                  option(selected = "selected") Nevada
+                else
+                  option Nevada
+                if user.profile.location === "California"
+                  option(selected = "selected") California
+                else
+                  option California
+                if user.profile.location === "Florida"
+                  option(selected = "selected") Florida
+                else
+                  option Florida
+                if user.profile.location === "Maine"
+                  option(selected = "selected") Maine
+                else
+                  option Maine
+          .form-group
+            if (user.profile.company === '')
+              label.col-sm-2.control-label(for='company') Company
+              if (user.profile.userType === 'Contractor')
+                .col-sm-4 
+                  input.form-control(type='text', name='company', id='company', value='')
+              else if (user.profile.userType === 'Security')
+                .col-sm-4
+                  input.form-control(type='text', name='company', id='company', value='Security Company')
+              else if (user.profile.userType === 'Associate')
+                .col-sm-4
+                  input.form-control(type='text', name='company', id='company', value='Staffing Agency')
+              else
+                .col-sm-4
+                  input.form-control(type='text', name='company', id='company', value='Manufacturing Company')
+            else
+              label.col-sm-2.control-label(for='company') Company
+              if (user.profile.userType === 'Safety Employee' || user.profile.userType === 'Security')
+                .col-sm-4
+                  input.form-control(type='text', name='company', id='company', value='#{user.profile.company}')
+              else
+                .col-sm-4
+                  input.form-control(type='text', name='company', id='company', value='#{user.profile.company}' disabled)
+          .form-group
+            .col-sm-offset-2.col-sm-4
+              button.btn.btn.btn-primary(type='submit')
+                i.fa.fa-magnet
+                | Update Profile
+
+
+        if secrets.localAuth
+          .page-header
+            h3 Change Password
+
+          form.form-horizontal(action='/account/password', method='POST')
+            .form-group
+              label.col-sm-2.control-label(for='password') New Password
+              .col-sm-4
+                input.form-control(type='password', name='password', id='password')
+                input(type='hidden', name='_csrf', value=token)
+            .form-group
+              label.col-sm-2.control-label(for='confirmPassword') Confirm Password
+              .col-sm-4
+                input.form-control(type='password', name='confirmPassword', id='confirmPassword')
+            .form-group
+              .col-sm-offset-2.col-sm-4
+                button.btn.btn.btn-primary(type='submit')
+                  i.fa.fa-keyboard-o
+                  | Change Password

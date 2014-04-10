@@ -1,0 +1,47 @@
+extends layout
+block content
+	h1
+		|Welcome to the Contractor Questionaire Sheet 
+		br
+		|#{user.profile.name}
+	h1
+	|Created by Timothy Foster
+	br
+	br
+	.container-fluid
+		form.form-horizontal(name="newcont", method="post", action="/newcont")
+			input(type='hidden', name='_csrf', value=token)
+			.form-group
+				legend Company Information
+				label.col-md-2.control-label(for="companyName") Company Name
+				.col-md-4
+					input.form-control(type="text", placeholder="Company Name", id="companyName", name="companyName")
+				label.col-md-2.control-label(for="naicsVal") Naics Value
+				.col-md-4
+					input.form-control(type="text", placeholder="NAICS", id="naicsVal", name="naicsVal")
+			.form-group
+				legend Local Branch Information
+				label.col-md-1.control-label(for="address") Address
+				.col-md-3
+					input.form-control(type="text", placeholder="Address", name="address")
+				label.col-md-1.control-label(for="City") City
+				.col-md-2
+					input.form-control(type="text", placeholder="City", name="City")
+				label.col-md-1.control-label(for="State") State
+				.col-md-1
+					input.form-control(type="text", placeholder="State", name="State")
+				label.col-md-1.control-label(for="Zip") Zip Code
+				.col-md-1
+					input.form-control(type="text", placeholder="Zip", name="Zip")
+			.form-group
+				legend Washington State License Information
+				input.form-control(type="text", placeholder="WA contractor License #", name="WAContractorLic")
+				input.form-control(type="text", placeholder="License Limit", name="LicLimit")
+			.form-group
+				legend Safety Officer Information
+				input.form-control(type="text", placeholder="Safety Officer Name", name="SafetyOfficerName" value=user.email)
+				input.form-control(type="text", placeholder="Telephone Number", name="SafetyTelepone")
+				input.form-control(type="text", placeholder="Safety Officer Email", name="SafetyOfficerEmail")
+
+			<h1>For all questions or concerns please contact your point of contact for The Manufacturing Plant
+		button#btnSubmit(type="submit") Press This to Submit your Data

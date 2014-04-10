@@ -1,0 +1,46 @@
+extends layout
+
+block content
+
+    #BodyBlock.col-md-9
+      if (user)
+        if (user.profile.name === '')
+          .col-md-7.col-md-offset-1
+            h1.text-center Welcome to the Employee portal.
+            p.lead.text-center Since your account is new, you will need to set up your information in your account settings.
+            .col-md-offset-4
+              a(href="/account" role="button").btn.btn-primary.btn-lg.active Account settings
+        else
+          h1 Employee Home Page
+          if (user.profile.userType === 'Safety Employee')
+            h2 Welcome #{user.profile.name}, you are a #{user.profile.userType}.
+            p.lead
+              |As a #{user.userType}, Your features will focus primarly on Safety. You will have access to Employee and Contractor lists.
+            p.lead
+              |The side bar will be filled with Safety, Contractor, and Employee information tabs.
+            p.lead
+              |This homepage will act similar to a Facebook home page and have a running history of important topics for your viewing.
+          else if (user.profile.userType === 'Security')
+            h2 Welcome #{user.profile.name}, you are a #{user.profile.userType}.
+            p.lead
+              |As a #{user.profile.userType} user, your features will range a broad specturm, However the focus will primarily be front desk and security training.
+            p.lead
+              |You will have access to the complete list of employees, associates, and contractors.
+            p.lead
+              |You will be to access the news information for the various departments.
+      else
+        .row
+            h1.text-center Welcome to the Prototype for the Employee Portal
+            .row
+              .col-md-offset-2.col-md-8
+                h2.text-center You are currently not logged in. 
+                  br
+                  br
+                  |  Please log in to experience the full functionality of the website.
+        br
+        .row.col-md-offset-2
+            p.lead
+              span.col-md-4
+                |This will be the first page a visitor sees upon arriving without being logged in.
+              span.col-md-4
+                |This page will drastically change based upon what type of user is currently logged in.
